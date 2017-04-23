@@ -41,6 +41,40 @@ public class A4PrintJob implements PrintableJob {
 		this.setCostConf(new A4PrintJobCostConf()); // use default costs.
 	}
 
+	public static A4PrintJob parse(String[] params) {
+		if (params == null || params.length != 3)
+			throw new RuntimeException("Invalid number of parameters for an A4 print job. Should be exactly 3.");
+
+		int totalPages, colourPages;
+		boolean doubleSided;
+
+		// Check for invalid totalPages parameter:
+		try {
+			totalPages = Integer.parseInt(params[0]);
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(
+					"Expected total number of pages, got: " + params[0]);
+		}
+
+		// Check for invalid colourPages parameter:
+		try {
+			colourPages = Integer.parseInt(params[1]);
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(
+					"Expected number of colour pages, got: " + params[1]);
+		}
+
+		// check for invalid double-sided parameter:
+		if (!params[2].toLowerCase().equals(Boolean.TRUE.toString()) &&
+			!params[2].toLowerCase().equals(Boolean.FALSE.toString()))
+			throw new RuntimeException(
+					"Expected whether to print a double sided sheet, got: " + params[2]);
+
+		doubleSided = Boolean.parseBoolean(params[2]);
+
+		return new A4PrintJob(totalPages - colourPages, colourPages, doubleSided);
+	}
+
 	public int getBwPages() {
 		return bwPages;
 	}

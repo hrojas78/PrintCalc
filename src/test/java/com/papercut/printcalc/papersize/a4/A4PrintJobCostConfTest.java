@@ -1,4 +1,4 @@
-package com.papercut.printcalc.papersize.a4;;
+package com.papercut.printcalc.papersize.a4;
 
 import static org.junit.Assert.*;
 
