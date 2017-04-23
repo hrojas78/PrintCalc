@@ -56,6 +56,11 @@ public class A4PrintJob implements PrintableJob {
 					"Expected total number of pages, got: " + params[0]);
 		}
 
+		// Check that totalPages is a positive integer:
+		if (totalPages < 0)
+			throw new RuntimeException(
+					"Total number of pages must be a positive number, got: " + totalPages);
+
 		// Check for invalid colourPages parameter:
 		try {
 			colourPages = Integer.parseInt(params[1]);
@@ -63,6 +68,16 @@ public class A4PrintJob implements PrintableJob {
 			throw new RuntimeException(
 					"Expected number of colour pages, got: " + params[1]);
 		}
+
+		// Check that colourPages is a positive integer:
+		if (colourPages < 0)
+			throw new RuntimeException(
+					"Number of colour pages must be a positive number, got: " + colourPages);
+
+		// Check that colourPages <= totalPages:
+		if (colourPages > totalPages)
+			throw new RuntimeException(
+					"Number of colour pages must not exceed total pages");
 
 		// check for invalid double-sided parameter:
 		if (!params[2].toLowerCase().equals(Boolean.TRUE.toString()) &&

@@ -81,6 +81,19 @@ public class A4PrintJobParseMethodTest
 	}
 
 	/**
+	 * Failing {@link A4PrintJob#parse(String[])} test, negative total pages value.
+	 */
+	@Test
+	public void shouldNot_parseJob_fromNegativeTotalPagesParam() {
+		try {
+			A4PrintJob.parse(new String[] {"-10", "World", "sup?"});
+			fail("Should fail on negative total pages number");
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "Total number of pages must be a positive number, got: -10");
+		}
+	}
+
+	/**
 	 * Failing {@link A4PrintJob#parse(String[])} test, empty colour pages value.
 	 */
 	@Test
@@ -103,6 +116,32 @@ public class A4PrintJobParseMethodTest
 			fail("Should fail on invalid colour pages number");
 		} catch (RuntimeException e) {
 			assertEquals(e.getMessage(), "Expected number of colour pages, got: Hello");
+		}
+	}
+
+	/**
+	 * Failing {@link A4PrintJob#parse(String[])} test, negative colour pages value.
+	 */
+	@Test
+	public void shouldNot_parseJob_fromNegativeColourPagesParam() {
+		try {
+			A4PrintJob.parse(new String[] {"502", "-22", "sup?"});
+			fail("Should fail on negative colour pages number");
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "Number of colour pages must be a positive number, got: -22");
+		}
+	}
+
+	/**
+	 * Failing {@link A4PrintJob#parse(String[])} test, colour pages value greater than total pages.
+	 */
+	@Test
+	public void shouldNot_parseJob_onColourPagesGreaterThanTotalPages() {
+		try {
+			A4PrintJob.parse(new String[] {"502", "503", "sup?"});
+			fail("Should fail on colour pages greater than total pages");
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "Number of colour pages must not exceed total pages");
 		}
 	}
 
