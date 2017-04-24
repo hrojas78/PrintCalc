@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +63,7 @@ public class CsvFileLoader
 			final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 			final InputStream is = classloader.getResourceAsStream(file);
 			final BufferedReader br = new BufferedReader(
-					new InputStreamReader(is, StandardCharsets.UTF_8));
+					new InputStreamReader(is, "UTF-8"));
 	
 			String readLine;
 			String[] line;
