@@ -59,7 +59,7 @@ public class A4PrintJobCostConfTest
 			new A4PrintJobCostConf(bwSingle, colourSingle, bwDouble, colourDouble);
 			fail("Should fail on invalid BW single cost");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid black & white page cost for job type single sided.");
+			assertEquals("Invalid black & white page cost for job type single sided.", e.getMessage());
 		}
 	}
 
@@ -77,7 +77,7 @@ public class A4PrintJobCostConfTest
 			new A4PrintJobCostConf(bwSingle, colourSingle, bwDouble, colourDouble);
 			fail("Should fail on invalid colour single cost");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid colour page cost for job type single sided.");
+			assertEquals("Invalid colour page cost for job type single sided.", e.getMessage());
 		}
 	}
 
@@ -95,7 +95,7 @@ public class A4PrintJobCostConfTest
 			new A4PrintJobCostConf(bwSingle, colourSingle, bwDouble, colourDouble);
 			fail("Should fail on invalid black and white double cost");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid black & white page cost for job type double sided.");
+			assertEquals("Invalid black & white page cost for job type double sided.", e.getMessage());
 		}
 	}
 
@@ -113,7 +113,7 @@ public class A4PrintJobCostConfTest
 			new A4PrintJobCostConf(bwSingle, colourSingle, bwDouble, colourDouble);
 			fail("Should fail on invalid colour double cost");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid colour page cost for job type double sided.");
+			assertEquals("Invalid colour page cost for job type double sided.", e.getMessage());
 		}
 	}
 }

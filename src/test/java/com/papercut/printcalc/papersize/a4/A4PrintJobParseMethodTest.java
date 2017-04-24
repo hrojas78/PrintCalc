@@ -23,7 +23,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(null);
 			fail("Should fail on null parameters");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid number of parameters for an A4 print job. Should be exactly 3.");
+			assertEquals("Invalid number of parameters for an A4 print job. Should be exactly 3.", e.getMessage());
 		}
 	}
 
@@ -36,7 +36,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {""});
 			fail("Should fail on invalid number of parameters");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid number of parameters for an A4 print job. Should be exactly 3.");
+			assertEquals("Invalid number of parameters for an A4 print job. Should be exactly 3.", e.getMessage());
 		}
 	}
 
@@ -50,7 +50,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(params);
 			fail("Should fail on invalid number of parameters");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Invalid number of parameters for an A4 print job. Should be exactly 3.");
+			assertEquals("Invalid number of parameters for an A4 print job. Should be exactly 3.", e.getMessage());
 		}
 	}
 
@@ -63,7 +63,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"", "", ""});
 			fail("Should fail on empty total pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected total number of pages, got: ");
+			assertEquals("Expected total number of pages, got: ", e.getMessage());
 		}
 	}
 
@@ -76,7 +76,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"Hello", "World", "sup?"});
 			fail("Should fail on invalid total pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected total number of pages, got: Hello");
+			assertEquals("Expected total number of pages, got: Hello", e.getMessage());
 		}
 	}
 
@@ -89,7 +89,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"-10", "World", "sup?"});
 			fail("Should fail on negative total pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Total number of pages must be a positive number, got: -10");
+			assertEquals("Total number of pages must be a positive number, got: -10", e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "", ""});
 			fail("Should fail on empty colour pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected number of colour pages, got: ");
+			assertEquals("Expected number of colour pages, got: ", e.getMessage());
 		}
 	}
 
@@ -115,7 +115,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "Hello", "World"});
 			fail("Should fail on invalid colour pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected number of colour pages, got: Hello");
+			assertEquals("Expected number of colour pages, got: Hello", e.getMessage());
 		}
 	}
 
@@ -128,7 +128,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "-22", "sup?"});
 			fail("Should fail on negative colour pages number");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Number of colour pages must be a positive number, got: -22");
+			assertEquals("Number of colour pages must be a positive number, got: -22", e.getMessage());
 		}
 	}
 
@@ -141,7 +141,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "503", "sup?"});
 			fail("Should fail on colour pages greater than total pages");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Number of colour pages must not exceed total pages");
+			assertEquals("Number of colour pages must not exceed total pages", e.getMessage());
 		}
 	}
 
@@ -154,7 +154,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "22", ""});
 			fail("Should fail on invalid doublesided value");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected whether to print a double sided sheet, got: ");
+			assertEquals("Expected whether to print a double sided sheet, got: ", e.getMessage());
 		}
 	}
 
@@ -167,7 +167,7 @@ public class A4PrintJobParseMethodTest
 			A4PrintJob.parse(new String[] {"502", "22", "Hello"});
 			fail("Should fail on invalid doublesided value");
 		} catch (RuntimeException e) {
-			assertEquals(e.getMessage(), "Expected whether to print a double sided sheet, got: Hello");
+			assertEquals("Expected whether to print a double sided sheet, got: Hello", e.getMessage());
 		}
 	}
 
