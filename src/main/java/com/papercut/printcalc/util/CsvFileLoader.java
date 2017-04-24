@@ -1,9 +1,10 @@
 package com.papercut.printcalc.util;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,26 +58,28 @@ public class CsvFileLoader
 
 	private void loadLines() {
 		this.lines = new ArrayList<String[]>();
-
+	
 		try {
-			// assume the file is in the classpath
-			final File f = new File(file);
-			final BufferedReader br = new BufferedReader(new FileReader(f));
-
+			// Get a buffered read from the file in the resources folder:
+			final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+			final InputStream is = classloader.getResourceAsStream(file);
+			final BufferedReader br = new BufferedReader(
+					new InputStreamReader(is, StandardCharsets.UTF_8));
+	
 			String readLine;
 			String[] line;
-
+	
 			while ((readLine = br.readLine()) != null) {
 				// splits the read line using the comma character
 				line = readLine.trim().split(VAL_SEPARATOR);
-
+	
 				// trims each value
 				for (int i = 0; i < line.length; i++)
 					line[i] = line[i].trim();
-
+	
 				lines.add(line);
 			}
-
+	
 			if (br != null) br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
