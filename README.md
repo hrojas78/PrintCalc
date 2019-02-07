@@ -1,10 +1,10 @@
 # PrintCalc
-A simple but extensible print job cost calculator (PaperCut coding challenge).<br>
+A simple but extensible print job cost calculator (challenge)<br>
 By Hernan Rojas.<br>
 Last edited: April 24th, 2017.
 
 # Challenge statement
-To reduce printing waste, a school is implementing PaperCut and will charge for printing as follows:<br>
+To reduce printing waste, a school will charge for printing as follows:<br>
 
 Paper size A4, job type single sided:<br>
  * 15 cents per black and white page
