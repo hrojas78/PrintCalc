@@ -32,7 +32,7 @@ My aim was to deliver a simple solution that focused on extensibility and demons
  * The class `PrintJobParser` parses String arrays into `PrintableJobs`. It recognizes the print job type from the headers and constructs `PrintableJobs` accordingly (`A4PrintJob`, for instance).
  * The class `CsvFileLoader` reads a CSV file from the /resources folder and turns each line to a String array, that will be passed later to `PrintJobParser`.
  * `PrintCalc` is the application's entry point. It gets the CSV file from the command line arguments, uses `CsvFileLoader` and `PrintJobParser` to get a List of Printable Jobs. Then, it is capable of displaying information for each (including cost) and calculating the total cost of all print jobs.
- * To add support for a new paper size, a developer should create a package under `com.papercut.printcalc.papersize` and add to it a class than implements `PrintableJob`. Finally, the developer should modify `PrintJobParser` to 1) add to the `paperSizeHeaders` map the headers that uniquely identify the new print job and 2) return instances of the new print job implementation in the `parse` method. That's all :).
+ * To add support for a new paper size, a developer should create a package under `com.p4p3rcut.printcalc.papersize` and add to it a class than implements `PrintableJob`. Finally, the developer should modify `PrintJobParser` to 1) add to the `paperSizeHeaders` map the headers that uniquely identify the new print job and 2) return instances of the new print job implementation in the `parse` method. That's all :).
 
 ## File Listing
 ```
@@ -45,7 +45,7 @@ My aim was to deliver a simple solution that focused on extensibility and demons
   ├───main
   │ ├─java
   │ │ └─com
-  │ │   └─papercut
+  │ │   └─p4p3rcut
   │ │     └─printcalc
   │ │       │ PrintCalc.java                     Main application entry point
   │ │       │
@@ -66,7 +66,7 @@ My aim was to deliver a simple solution that focused on extensibility and demons
   └─test
     ├─java
     │ └─com
-    │   └─papercut
+    │   └─p4p3rcut
     │     └─printcalc
     │       │ PrintCalcTest.java                 Tests for the PrintCalc class
     │       │
